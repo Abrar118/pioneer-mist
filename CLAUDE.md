@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Pioneer-Mist is a memorial tribute blog platform for MIST (Military Institute of Science and Technology) students, built with Next.js 14 App Router and static MDX content via Velite. The site is deployed on Vercel at `pioneers.mist.ac.bd`.
+Pioneer-Mist is a memorial tribute blog platform for MIST (Military Institute of Science and Technology) students, built with Next.js 16 App Router (Turbopack) and static MDX content via Velite. The site is deployed on Vercel at `pioneers.mist.ac.bd`.
 
 ## Commands
 
 - **Dev server**: `npm run dev`
-- **Build**: `npm run build` (Velite content generation runs automatically via webpack plugin)
-- **Lint**: `npm run lint`
+- **Build**: `npm run build` (Velite content generation runs automatically via programmatic build in `next.config.mjs`)
+- **Lint**: `npm run lint` (ESLint 9 flat config)
 - **Production server**: `npm start`
 
 There is no test framework configured.
@@ -31,10 +31,9 @@ MDX rendering uses rehype plugins for syntax highlighting (github-dark theme), h
 ### Routing
 
 - `/` — Homepage with hero, image slideshow, tribute spotlights, latest posts
-- `/blog/[...slug]` — Dynamic MDX blog posts (statically generated)
-- `/tags/[tag]` — Posts filtered by tag
+- `/blog/[...slug]` — Dynamic MDX blog posts (statically generated, async params)
+- `/tags/[tag]` — Posts filtered by tag (async params)
 - `/about` — About page
-- `/admin/*` — Admin dashboard (uses mock data, no database)
 - `/api/og` — Edge runtime OG image generation
 
 ### Component Patterns
@@ -46,7 +45,7 @@ MDX rendering uses rehype plugins for syntax highlighting (github-dark theme), h
 
 ### Styling
 
-Tailwind CSS with a custom HSL variable color system. Primary color is emerald, accent is saffron gold. Dark mode uses CSS class strategy. Custom effects include radial glows (`.bg-radial-glow`, `.bg-accent-glow`) and MDX-specific styles in `styles/mdx.css`.
+Tailwind CSS 4 with CSS-first configuration (no `tailwind.config.ts` — theme lives in `@theme` block in `globals.css`). Primary color is emerald, accent is saffron gold. Dark mode uses `@custom-variant dark` with class strategy. Custom effects include radial glows (`.bg-radial-glow`, `.bg-accent-glow`). MDX-specific styles in `styles/mdx.css` use `@reference "tailwindcss"` for `@apply` access.
 
 ### Static Assets
 
