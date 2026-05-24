@@ -7,22 +7,22 @@ import { SiteConfig } from "@/config/site";
 import { Tag } from "@/components/tag";
 
 interface PostPageProps {
-  params: {
+  params: Promise<{
     slug: string[];
-  };
+  }>;
 }
 
-async function getPostFromParams(params: PostPageProps["params"]) {
-  const slug = params?.slug?.join("/");
-  const post = posts.find((post) => post.slugAsParams === slug);
-
+async function getPostFromParams(slug: string[]) {
+  const slugPath = slug?.join("/");
+  const post = posts.find((post) => post.slugAsParams === slugPath);
   return post;
 }
 
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params);
+  const { slug } = await params;
+  const post = await getPostFromParams(slug);
 
   if (!post) {
     return {};
@@ -58,14 +58,13 @@ export async function generateMetadata({
   };
 }
 
-export async function generateStaticParams(): Promise<
-  PostPageProps["params"][]
-> {
+export async function generateStaticParams(): Promise<{ slug: string[] }[]> {
   return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostFromParams(params);
+  const { slug } = await params;
+  const post = await getPostFromParams(slug);
 
   if (!post || !post.published) {
     notFound();
