@@ -10,8 +10,8 @@ import { ModeToggle } from "./mode-toggle";
 
 export default function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/50">
-      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-backdrop-filter:bg-background/50">
+      <div className="container flex h-16 max-w-(--breakpoint-2xl) items-center justify-between">
         <MainNav />
         <div className="flex items-center space-x-3">
           <nav className="flex items-center space-x-1">

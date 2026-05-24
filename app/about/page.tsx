@@ -48,7 +48,7 @@ export default async function AboutPage() {
             Solemn Memorial Page
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight leading-none text-balance">
-            Honoring Our <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">Pioneers</span>
+            Honoring Our <span className="bg-linear-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">Pioneers</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">
             A digital memory space dedicated to preserving the stories, voices, and immense sacrifices of MIST students who stood on the side of justice and reform.
@@ -109,7 +109,7 @@ export default async function AboutPage() {
         </div>
 
         {/* Editorial Tribute Details */}
-        <div className="rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm p-6 md:p-10 mb-20 space-y-6">
+        <div className="rounded-2xl border border-border/50 bg-card/60 backdrop-blur-xs p-6 md:p-10 mb-20 space-y-6">
           <h2 className="text-3xl font-extrabold tracking-tight">Our Mission & Purpose</h2>
           <p className="text-muted-foreground text-md leading-relaxed text-justify">
             Our platform serves as an open space for MISTians to share their poetry, essays, first-hand experiences, and reflections. The student community at MIST has historically been a hub of scientific curiosity and excellence, but during the historic events of July and August 2024, our students proved they also held deep, unshakable courage.
@@ -135,7 +135,7 @@ export default async function AboutPage() {
               return (
                 <div key={idx} className="relative group">
                   {/* Timeline Badge Dot */}
-                  <div className={`absolute -left-[45px] md:-left-[53px] top-1.5 w-8 h-8 rounded-full border-2 flex items-center justify-center shadow-sm z-10 bg-background ${item.color}`}>
+                  <div className={`absolute left-[-45px] md:left-[-53px] top-1.5 w-8 h-8 rounded-full border-2 flex items-center justify-center shadow-xs z-10 bg-background ${item.color}`}>
                     <Icon className="h-4.5 w-4.5" />
                   </div>
                   {/* Timeline content card */}

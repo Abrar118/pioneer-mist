@@ -34,7 +34,7 @@ export function PostItem({
         
         <div className="space-y-2">
           <h3 className="text-xl md:text-2xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-200">
-            <Link href={`/${slug}`} className="focus:outline-none">
+            <Link href={`/${slug}`} className="focus:outline-hidden">
               <span className="absolute inset-0 rounded-2xl" aria-hidden="true" />
               {title}
             </Link>

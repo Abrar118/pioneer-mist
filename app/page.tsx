@@ -45,7 +45,7 @@ export default function Home() {
               Honoring MISTian Martyrs
             </div>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none text-balance">
-              Pioneers of <span className="bg-gradient-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">MIST</span>
+              Pioneers of <span className="bg-linear-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">MIST</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl text-balance leading-relaxed">
               Paying solemn tribute to the brave students who laid down their lives and fought tirelessly for rights, justice, and reform at the Military Institute of Science and Technology.
@@ -92,7 +92,7 @@ export default function Home() {
                   className="object-cover"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80 md:opacity-90" />
+                <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-80 md:opacity-90" />
               </motion.div>
             </AnimatePresence>
 

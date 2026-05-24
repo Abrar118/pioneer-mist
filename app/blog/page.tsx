@@ -96,7 +96,7 @@ export default function BlogPage() {
             placeholder="Search blogs, tags, topics..."
             value={searchQuery}
             onChange={handleSearchChange}
-            className="pl-11 h-12 rounded-xl bg-card border-border/80 shadow-sm focus-visible:ring-primary focus-visible:ring-offset-0 focus-visible:ring-1"
+            className="pl-11 h-12 rounded-xl bg-card border-border/80 shadow-xs focus-visible:ring-primary focus-visible:ring-offset-0 focus-visible:ring-1"
           />
         </div>
 
@@ -164,7 +164,7 @@ export default function BlogPage() {
 
           {/* Right Sidebar - Tags Catalogue */}
           <aside className="lg:col-span-4 sticky top-24">
-            <Card className="rounded-2xl border border-border/50 shadow-sm bg-card/80 backdrop-blur-sm">
+            <Card className="rounded-2xl border border-border/50 shadow-xs bg-card/80 backdrop-blur-xs">
               <CardHeader className="border-b border-border/40 pb-4">
                 <CardTitle className="text-lg font-bold flex items-center gap-2">
                   <Compass className="h-4.5 w-4.5 text-primary" />
@@ -180,7 +180,7 @@ export default function BlogPage() {
                       onClick={() => handleTagSelect(tag)}
                       className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border transition-all duration-200 select-none ${
                         isSelected
-                          ? "bg-primary text-primary-foreground border-primary shadow-sm scale-95"
+                          ? "bg-primary text-primary-foreground border-primary shadow-xs scale-95"
                           : "bg-muted/40 hover:bg-muted text-muted-foreground border-border/80 hover:text-foreground"
                       }`}
                     >

@@ -4,7 +4,7 @@ import { Icons } from "./icons";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border/40 bg-background/50 backdrop-blur-sm mt-20">
+    <footer className="border-t border-border/40 bg-background/50 backdrop-blur-xs mt-20">
       <div className="container max-w-7xl mx-auto py-10 md:py-14 flex flex-col items-center justify-between gap-6 md:flex-row">
         <div className="flex flex-col items-center md:items-start gap-2">
           <p className="text-sm font-semibold tracking-tight text-foreground">
