@@ -7,13 +7,14 @@ import { MainNav } from "./main-nav";
 import { MobileNav } from "./mobile-nav";
 import { ModeToggle } from "./mode-toggle";
 
+
 export default function SiteHeader() {
   return (
-    <header className="z-10 sticky top-0 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center">
+    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/50">
+      <div className="container flex h-16 max-w-screen-2xl items-center justify-between">
         <MainNav />
-        <div className="flex flex-1 items-center justify-end space-x-2">
-          <nav className="flex items-center">
+        <div className="flex items-center space-x-3">
+          <nav className="flex items-center space-x-1">
             <Link
               href={SiteConfig.links.github}
               target="_blank"
@@ -22,7 +23,7 @@ export default function SiteHeader() {
               <div
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
-                  "w-10 px-0 hidden sm:inline-flex"
+                  "w-9 h-9 px-0 hidden sm:inline-flex rounded-full hover:bg-muted"
                 )}
               >
                 <Icons.gitHub className="h-4 w-4" />
@@ -37,7 +38,7 @@ export default function SiteHeader() {
               <div
                 className={cn(
                   buttonVariants({ variant: "ghost" }),
-                  "w-10 px-0 hidden sm:inline-flex"
+                  "w-9 h-9 px-0 hidden sm:inline-flex rounded-full hover:bg-muted"
                 )}
               >
                 <Icons.twitter className="h-4 w-4" />
@@ -52,3 +53,4 @@ export default function SiteHeader() {
     </header>
   );
 }
+
