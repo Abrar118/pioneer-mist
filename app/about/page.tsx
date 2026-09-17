@@ -19,9 +19,9 @@ export default async function AboutPage() {
       color: "border-emerald-500 bg-emerald-500/10 text-emerald-500"
     },
     {
-      date: "August 5, 2024",
+      date: "July 20, 2024",
       title: "The Final Stand of Rakib",
-      description: "Md. Rakibul Hussein (ME-11), an alumnus and professional engineer, returned to the streets to stand in solidarity with the students. He was martyred on this decisive day, just hours before victory was achieved.",
+      description: "Md. Rakibul Hussein (ME-11), an alumnus and professional engineer, returned to the streets to stand in solidarity with the students. He was martyred on this decisive day.",
       icon: Award,
       color: "border-amber-500 bg-amber-500/10 text-amber-500"
     },
@@ -98,12 +98,12 @@ export default async function AboutPage() {
               </div>
               <div className="text-right">
                 <span className="text-muted-foreground block">Martyrdom</span>
-                <span className="font-semibold text-foreground">August 5, 2024</span>
+                <span className="font-semibold text-foreground">July 20, 2024</span>
               </div>
             </div>
 
             <p className="text-sm text-muted-foreground leading-relaxed text-justify">
-              Rakib was a charismatic alumnus of MIST batch 2013 (Mechanical Engineering). Despite having graduated and working as a professional engineer, he returned to the student marches, driven by his lifelong commitment to standing beside people in need. He fell hours before victory.
+              Rakib was a charismatic alumnus of MIST batch 2013 (Mechanical Engineering). Despite having graduated and working as a professional engineer, he returned to the student marches, driven by his lifelong commitment to standing beside people in need. He fell on July 20, 2024.
             </p>
           </div>
         </div>
