@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-pt-14">
+    <html lang="en" className="scroll-pt-14" suppressHydrationWarning>
       <body
         className={cn("min-h-screen font-sans antialiased", outfit.variable)}
       >
