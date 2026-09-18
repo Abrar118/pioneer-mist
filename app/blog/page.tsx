@@ -89,7 +89,7 @@ export default function BlogPage() {
         </div>
 
         {/* Filter Toolbar */}
-        <div className="relative max-w-md w-full mb-8 group">
+        <div className="relative w-full mb-8 group">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground group-focus-within:text-primary transition-colors" />
           <Input
             type="text"
