@@ -1,124 +1,136 @@
-"use client";
-import { buttonVariants } from "@/components/ui/button";
-import { SiteConfig } from "@/config/site";
-import { cn, sortPosts } from "@/lib/utils";
-import { posts } from "#site/content";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { PostItem } from "@/components/post-item";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, User, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+type TributeCard = {
+  src: string;
+  eyebrow: string;
+  title: string;
+  href: string;
+};
+
+const heroSmallCards: TributeCard[] = [
+  { src: "/sr1.jpg", eyebrow: "Rakib • ME-11", title: "Our heroic Alumnus Rakib Vai", href: "/blog/rakib-vai" },
+  { src: "/SY_MISTDS.jpg", eyebrow: "Yamin • CSE-21", title: "First Offline Class", href: "/blog/first-offline-class" }
+];
+
+const featureCard = {
+  src: "/SY_MIC.jpg",
+  eyebrow: "Yamin • CSE-21",
+  title: "In Memory of My Brave Friend, Yamin",
+  sub: "MIST CSE-21 • Martyred July 18, 2024",
+  href: "/blog/yamin-poem"
+};
+
+const popularCards: TributeCard[] = [
+  { src: "/p1.jpeg", eyebrow: "Yamin • Game-Development", title: "Yamin's Appreciation for My Game Development", href: "/blog/rubaid-game" },
+  { src: "/rub1.jpg", eyebrow: "Internship • DESCO", title: "Industrial Attachment", href: "/blog/internship" },
+  { src: "/rub2.jpg", eyebrow: "ARCED • Research", title: "ARCED Foundation Research Program", href: "/blog/arced-java" }
+];
+
+function CardLink({ card, className }: { card: TributeCard; className?: string }) {
+  return (
+    <Link
+      href={card.href}
+      className={cn("group relative overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring", className)}
+    >
+      <Image
+        src={card.src}
+        alt={card.title}
+        fill
+        className="object-cover group-hover:scale-105 transition-transform duration-500"
+      />
+      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 p-4 md:p-5">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/70">
+          {card.eyebrow}
+        </span>
+        <h3 className="mt-1.5 text-lg font-semibold leading-snug text-white line-clamp-2 group-hover:underline group-hover:decoration-white/40">
+          {card.title}
+        </h3>
+      </div>
+    </Link>
+  );
+}
 
 export default function Home() {
-  const latestPosts = sortPosts(posts).filter(post => post.published).slice(0, 4);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const slideshow = [
-    { src: "/SY_MIC.jpg", caption: "Shykh Aashhabul Yamin at MIST Campus", subtitle: "CSE-21 Student, Martyred July 18, 2024" },
-    { src: "/sr1.jpg", caption: "Md. Rakibul Hussein participating in Student Movement", subtitle: "ME-11 Alumnus, Martyred August 5, 2024" },
-    { src: "/SY_MISTDS.jpg", caption: "Yamin with MIST Debating Society", subtitle: "Inspirational debater and brilliant programmer" },
-    { src: "/sr2.jpg", caption: "Shahid Rakib - standing firm on the side of justice", subtitle: "Charismatic leader and dedicated professional" }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % slideshow.length);
-    }, 6000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Background Halo Glows */}
-      <div className="absolute top-20 left-1/4 -z-10 w-[400px] h-[400px] rounded-full bg-radial-glow blur-3xl opacity-60" />
-      <div className="absolute top-[500px] right-1/4 -z-10 w-[500px] h-[500px] rounded-full bg-accent-glow blur-3xl opacity-50" />
+      {/* Hero Section — editorial card grid */}
+      <section className="bg-hero-bg text-hero-fg">
+        <div className="container mx-auto pt-6 pb-16 md:pb-24">
+          <div className="grid grid-cols-1 gap-4 lg:grid-cols-5">
+            {/* Stacked small cards (left) */}
+            <div className="grid grid-cols-2 gap-4 lg:col-span-2 lg:grid-cols-1">
+              {heroSmallCards.map((card) => (
+                <CardLink key={card.href} card={card} className="h-64 sm:h-72 lg:h-auto lg:min-h-[350px]" />
+              ))}
+            </div>
 
-      {/* Hero Section */}
-      <section className="container max-w-7xl mx-auto pt-8 pb-16 md:py-24 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Hero Left Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6 md:pr-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-500 dark:bg-emerald-500/15 dark:text-emerald-400 border border-emerald-500/20">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Honoring MISTian Martyrs
+            {/* Feature card (right) */}
+            <Link
+              href={featureCard.href}
+              className="group relative min-h-[420px] overflow-hidden rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring sm:min-h-[480px] lg:col-span-3 lg:min-h-0"
+            >
+              <Image
+                src={featureCard.src}
+                alt={featureCard.title}
+                fill
+                priority
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/30 to-black/10" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 md:p-8">
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-white/70">
+                  {featureCard.eyebrow}
+                </span>
+                <h1 className="mt-3 max-w-2xl text-3xl font-bold leading-[1.1] sm:text-4xl md:text-5xl">
+                  {featureCard.title}
+                </h1>
+                <div className="mt-5 flex flex-wrap items-center gap-3">
+                  <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/40 px-4 py-2 text-sm font-medium backdrop-blur-sm transition-colors group-hover:bg-black/60">
+                    Read Article
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                  <span className="inline-flex items-center gap-2 rounded-full bg-black/40 px-4 py-2 text-sm text-white/80 backdrop-blur-sm">
+                    <span className="h-5 w-5 rounded-full bg-linear-to-br from-emerald-400 to-emerald-600" />
+                    {featureCard.sub}
+                  </span>
+                </div>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Most Popular Articles — lavender band */}
+      <section className="bg-[#cdc5e6] text-[#17142b] dark:bg-[#161329] dark:text-white">
+        <div className="container mx-auto py-16 md:py-24">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+            <div>
+              <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+                Our most
+                <br />
+                popular articles
+              </h2>
+              <p className="mt-4 max-w-md text-sm text-[#46426b] md:text-base dark:text-white/60">
+                Tributes, poems, and journals shared by classmates, batchmates, and friends.
+              </p>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-none text-balance">
-              Pioneers of <span className="bg-linear-to-r from-emerald-500 to-teal-400 bg-clip-text text-transparent">MIST</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl text-balance leading-relaxed">
-              Paying solemn tribute to the brave students who laid down their lives and fought tirelessly for rights, justice, and reform at the Military Institute of Science and Technology.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
-              <Link
-                href="/blog"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "w-full sm:w-fit font-semibold px-6 shadow-md hover:shadow-lg transition-all"
-                )}
-              >
-                View Tribute Blogs
-              </Link>
-              <Link
-                href={SiteConfig.links.github}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "w-full sm:w-fit font-semibold px-6 border-border/80 hover:bg-muted"
-                )}
-              >
-                MIST Official Website
-              </Link>
-            </div>
+            <Link
+              href="/blog"
+              className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-[#17142b] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#2a2745] dark:bg-white dark:text-[#17142b] dark:hover:bg-white/90"
+            >
+              Read All Article
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
 
-          {/* Hero Right Slideshow Carousel */}
-          <div className="lg:col-span-5 relative w-full h-[380px] sm:h-[450px] md:h-[480px] rounded-2xl overflow-hidden shadow-2xl border border-border/40 group bg-card">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentImageIndex}
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute inset-0 w-full h-full"
-              >
-                <Image
-                  src={slideshow[currentImageIndex].src}
-                  alt={slideshow[currentImageIndex].caption}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-background via-background/20 to-transparent opacity-80 md:opacity-90" />
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Slideshow Details Overlay */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col justify-end text-left select-none pointer-events-none z-20">
-              <h4 className="text-lg md:text-xl font-bold text-foreground line-clamp-1">
-                {slideshow[currentImageIndex].caption}
-              </h4>
-              <p className="text-xs md:text-sm text-muted-foreground mt-1">
-                {slideshow[currentImageIndex].subtitle}
-              </p>
-              {/* Pagination Dots */}
-              <div className="flex gap-1.5 mt-4">
-                {slideshow.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={cn(
-                      "w-7 h-1.5 rounded-full pointer-events-auto transition-all duration-300",
-                      index === currentImageIndex ? "bg-primary" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    )}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-            </div>
+          <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3">
+            {popularCards.map((card) => (
+              <CardLink key={card.href} card={card} className="h-72 md:h-80" />
+            ))}
           </div>
         </div>
       </section>
@@ -187,46 +199,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Latest Posts Grid Section */}
-      <section className="container max-w-7xl mx-auto py-16 border-t border-border/40">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-12">
-          <div className="space-y-2">
-            <h2 className="text-3xl font-extrabold tracking-tight">Latest Tribute Posts</h2>
-            <p className="text-muted-foreground">
-              Read personal stories, poems, and journals shared by classmates, batchmates, and friends.
-            </p>
-          </div>
-          <Link
-            href="/blog"
-            className={cn(
-              buttonVariants({ variant: "ghost" }),
-              "gap-1 group/all shrink-0 font-semibold"
-            )}
-          >
-            See all blogs <ArrowRight className="h-4 w-4 group-hover/all:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        {latestPosts?.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {latestPosts.map((post) => (
-              <PostItem
-                key={post.slug}
-                slug={post.slug}
-                title={post.title}
-                description={post.description}
-                date={post.date}
-                tags={post.tags}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12 border border-dashed rounded-2xl bg-card">
-            <p className="text-muted-foreground">No posts published yet.</p>
-          </div>
-        )}
       </section>
     </div>
   );

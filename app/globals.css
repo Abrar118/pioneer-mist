@@ -25,6 +25,9 @@
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
 
+  --color-hero-bg: hsl(var(--hero-bg));
+  --color-hero-fg: hsl(var(--hero-fg));
+
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
 
@@ -114,38 +117,45 @@
 
 @layer base {
   :root {
-    --background: 30 20% 97%; /* Warm parchment white */
-    --foreground: 222.2 47% 11%;
+    /* Editorial ivory (Swiss Modernism light mode) */
+    --background: 36 25% 96%;
+    --foreground: 222 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 47% 11%;
+    --card-foreground: 222 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 47% 11%;
+    --popover-foreground: 222 25% 10%;
 
-    --primary: 142.1 76.2% 36.3%; /* MIST Emerald */
-    --primary-foreground: 210 40% 98%;
+    --primary: 150 55% 30%; /* Deep editorial emerald (4.5:1 on ivory) */
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 30 10% 91%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 36 20% 91%;
+    --secondary-foreground: 222 25% 10%;
 
-    --muted: 30 10% 92%;
-    --muted-foreground: 215.4 16.3% 44%;
+    --muted: 36 20% 92%;
+    --muted-foreground: 220 10% 38%;
 
-    --accent: 38 92% 50%; /* Heroic saffron gold */
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 33 85% 42%; /* Bronze saffron (4.5:1 on ivory) */
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 40%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 20 10% 86%;
-    --input: 20 10% 86%;
-    --ring: 142.1 76.2% 36.3%;
+    --border: 220 15% 87%;
+    --input: 220 15% 87%;
+    --ring: 150 55% 30%;
+
+    --hero-bg: 40 30% 99%; /* Near-white editorial canvas */
+    --hero-fg: 222 25% 10%;
 
     --radius: 0.75rem;
   }
 
   .dark {
+    --hero-bg: 240 14% 4%; /* Obsidian editorial black */
+    --hero-fg: 210 40% 98%;
+
     --background: 224 71% 4%; /* Deep obsidian navy midnight */
     --foreground: 210 40% 98%;
 
